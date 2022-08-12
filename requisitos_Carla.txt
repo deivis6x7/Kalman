@@ -1,0 +1,28 @@
+Python para fazer API:
+https://www.python.org/downloads/release/python-360/
+https://www.python.org/downloads/release/python-370/
+
+CMD:
+pip3 install --user pygame numpy
+
+Visual Studio: (baixe as extensões de Python)
+https://code.visualstudio.com/
+
+Instalação:
+https://github.com/carla-simulator/carla/releases/tag/0.9.11
+
+
+Execução do servidor no CMD:
+cd WindowsNoEditor
+.\CarlaUE4
+
+Execução do módulo de controle manual: (boa interface)
+cd PythonAPI\examples
+py -3.7 manual_control.py
+
+Map:
+https://www.openstreetmap.org/
+https://josm.openstreetmap.de/
+https://www.eclipse.org/sumo/
+
+

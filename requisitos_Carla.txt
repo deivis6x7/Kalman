@@ -24,5 +24,3 @@ Map:
 https://www.openstreetmap.org/
 https://josm.openstreetmap.de/
 https://www.eclipse.org/sumo/
-
-

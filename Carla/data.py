@@ -33,8 +33,11 @@ IMU_PARAMS = ('compass',)
 # Light Detection And Ranging (LiDAR)
 LiDAR_PARAMS = ('l',) # !
 
+t = 1/5 # Ajuste experimental no simulador
 dt = 1/50 # Sample Rate is 50Hz
 dtGNSS = 1/5 # Sample Rate is 5Hz
+#dtGNSS = 1/50 # Sample Rate is 50Hz (caso queira simplificar para ajustar com timestamps próximos)
+
 POS_TICK_INTERVAL_GNSS = str(dtGNSS) # in seconds
 POS_TICK_INTERVAL = str(dt)  # in seconds
 
@@ -204,13 +207,15 @@ def main():
         # Noise seed value
         gnss_bp.set_attribute('noise_seed', '10')
         # Altitude, latitude and longitude noise
-        sGNSS = 0.5*8.8*dt**2  # assume 8.8m/s2 as maximum acceleration, forcing the vehicle
-        sGNSS = sGNSS**2
+        #sGNSS = 0.5*8.8*t**2  # assume 8.8m/s2 as maximum acceleration, forcing the vehicle
+        #sGNSS = sGNSS**2
+        sGNSS = 0.000005
         gnss_bp.set_attribute('noise_alt_stddev', str(sGNSS))
         gnss_bp.set_attribute('noise_lat_stddev', str(sGNSS))
         gnss_bp.set_attribute('noise_lon_stddev', str(sGNSS))
         # Altitude, latitude and longitude bias
-        bGNSS = sGNSS*0.1
+        #bGNSS = sGNSS*0.1
+        bGNSS = sGNSS**2
         gnss_bp.set_attribute('noise_alt_bias', str(bGNSS))
         gnss_bp.set_attribute('noise_lat_bias', str(bGNSS))
         gnss_bp.set_attribute('noise_lon_bias', str(bGNSS))
@@ -228,20 +233,25 @@ def main():
         # Noise seed value
         imu_bp.set_attribute('noise_seed', '10')
         # Accelerometer noise
-        sAccel = 0.05 # assume 0.5m/s2
-        sAccel = sAccel**2
+        #sAccel = 0.05 # assume 0.5m/s2
+        #sAccel = sAccel**2
+        #sAccel = 0.5
+        sAccel = 0.001
         imu_bp.set_attribute('noise_accel_stddev_x', str(sAccel))
         imu_bp.set_attribute('noise_accel_stddev_y', str(sAccel))
         imu_bp.set_attribute('noise_accel_stddev_z', str(sAccel))
 
         # Gyroscope noise
-        sRotat = 1.0*dt # assume 1.0rad/s2 as the maximum turn rate acceleration for the vehicle
-        sRotat = sRotat**2 
+        #sRotat = 1.0*dt # assume 1.0rad/s2 as the maximum turn rate acceleration for the vehicle
+        #sRotat = sRotat**2 
+        #sRotat = 0.03
+        sRotat = 0.001
         imu_bp.set_attribute('noise_gyro_stddev_x', str(sRotat))
         imu_bp.set_attribute('noise_gyro_stddev_z', str(sRotat))
         imu_bp.set_attribute('noise_gyro_stddev_y', str(sRotat))
         # Gyroscope bias
-        sRotat = sRotat*0.1
+        #sRotat = sRotat*0.1
+        sRotat = sRotat**2
         imu_bp.set_attribute('noise_gyro_bias_x', str(sRotat))
         imu_bp.set_attribute('noise_gyro_bias_y', str(sRotat))
         imu_bp.set_attribute('noise_gyro_bias_z', str(sRotat))
@@ -319,7 +329,7 @@ def main():
         #write_lidar_labels()
         #lidar.listen(lambda data: write_lidar_values(data))
 
-        minutes = 3
+        minutes = 5
         duration = 60*minutes
 
         print()

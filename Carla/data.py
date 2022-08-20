@@ -210,15 +210,15 @@ def main():
         #sGNSS = 0.5*8.8*t**2  # assume 8.8m/s2 as maximum acceleration, forcing the vehicle
         #sGNSS = sGNSS**2
         sGNSS = 0.000005
-        gnss_bp.set_attribute('noise_alt_stddev', str(sGNSS))
-        gnss_bp.set_attribute('noise_lat_stddev', str(sGNSS))
-        gnss_bp.set_attribute('noise_lon_stddev', str(sGNSS))
+        gnss_bp.set_attribute('noise_alt_stddev', str(sGNSS*10)) # metros
+        gnss_bp.set_attribute('noise_lat_stddev', str(sGNSS)) # graus
+        gnss_bp.set_attribute('noise_lon_stddev', str(sGNSS)) # graus
         # Altitude, latitude and longitude bias
         #bGNSS = sGNSS*0.1
         bGNSS = sGNSS**2
-        gnss_bp.set_attribute('noise_alt_bias', str(bGNSS))
-        gnss_bp.set_attribute('noise_lat_bias', str(bGNSS))
-        gnss_bp.set_attribute('noise_lon_bias', str(bGNSS))
+        gnss_bp.set_attribute('noise_alt_bias', str(bGNSS*10)) # metros
+        gnss_bp.set_attribute('noise_lat_bias', str(bGNSS)) # graus
+        gnss_bp.set_attribute('noise_lon_bias', str(bGNSS)) # graus
 
         gnss_bp.set_attribute('sensor_tick', POS_TICK_INTERVAL_GNSS)
         # Spawn the GNSS attached at the center of mass of the vehicle
@@ -237,24 +237,24 @@ def main():
         #sAccel = sAccel**2
         #sAccel = 0.5
         sAccel = 0.001
-        imu_bp.set_attribute('noise_accel_stddev_x', str(sAccel))
-        imu_bp.set_attribute('noise_accel_stddev_y', str(sAccel))
-        imu_bp.set_attribute('noise_accel_stddev_z', str(sAccel))
+        imu_bp.set_attribute('noise_accel_stddev_x', str(sAccel)) # m/s2
+        imu_bp.set_attribute('noise_accel_stddev_y', str(sAccel)) # m/s2
+        imu_bp.set_attribute('noise_accel_stddev_z', str(sAccel)) # m/s2
 
         # Gyroscope noise
         #sRotat = 1.0*dt # assume 1.0rad/s2 as the maximum turn rate acceleration for the vehicle
         #sRotat = sRotat**2 
         #sRotat = 0.03
         sRotat = 0.001
-        imu_bp.set_attribute('noise_gyro_stddev_x', str(sRotat))
-        imu_bp.set_attribute('noise_gyro_stddev_z', str(sRotat))
-        imu_bp.set_attribute('noise_gyro_stddev_y', str(sRotat))
+        imu_bp.set_attribute('noise_gyro_stddev_x', str(sRotat)) # rad/s
+        imu_bp.set_attribute('noise_gyro_stddev_z', str(sRotat)) # rad/s
+        imu_bp.set_attribute('noise_gyro_stddev_y', str(sRotat)) # rad/s
         # Gyroscope bias
         #sRotat = sRotat*0.1
         sRotat = sRotat**2
-        imu_bp.set_attribute('noise_gyro_bias_x', str(sRotat))
-        imu_bp.set_attribute('noise_gyro_bias_y', str(sRotat))
-        imu_bp.set_attribute('noise_gyro_bias_z', str(sRotat))
+        imu_bp.set_attribute('noise_gyro_bias_x', str(sRotat)) # rad/s
+        imu_bp.set_attribute('noise_gyro_bias_y', str(sRotat)) # rad/s
+        imu_bp.set_attribute('noise_gyro_bias_z', str(sRotat)) # rad/s
 
         imu_bp.set_attribute('sensor_tick', POS_TICK_INTERVAL)
         # Spawn the IMU attached at the center of mass of the vehicle
@@ -267,7 +267,7 @@ def main():
         # Get the LiDAR definition
         lidar_bp = blueprint_library.find('sensor.lidar.ray_cast')
         if(noise):
-            lidar_bp.set_attribute('noise_stddev', '0.2')
+            lidar_bp.set_attribute('noise_stddev', '0.2') # ajustar depois
         #else:
         #    lidar_bp.set_attribute('dropoff_general_rate', '0.45')
         #    lidar_bp.set_attribute('dropoff_intensity_limit', '0.8')

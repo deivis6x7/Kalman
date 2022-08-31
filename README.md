@@ -11,5 +11,6 @@
 
 [Projeto cinemático do modelo uniciclo (CTRA)](https://github.com/deivis6x7/Kalman_21-22/blob/main/02-EKF.ipynb)
 
-[Projeto cinemático do modelo ackerman (CTRA)](https://github.com/deivis6x7/Kalman_21-22/blob/main/03-EKF.ipynb)
+[Projeto cinemático do modelo ackerman (CTRV)](https://github.com/deivis6x7/Kalman_21-22/blob/main/03-EKF.ipynb)
 
+[Projeto cinemático do modelo ackerman (CTRA)](https://github.com/deivis6x7/Kalman_21-22/blob/main/04-EKF.ipynb)

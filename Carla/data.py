@@ -236,7 +236,7 @@ def main():
         #sAccel = 0.05 # assume 0.5m/s2
         #sAccel = sAccel**2
         #sAccel = 0.5
-        sAccel = 0.001
+        sAccel = 0.005
         imu_bp.set_attribute('noise_accel_stddev_x', str(sAccel)) # m/s2
         imu_bp.set_attribute('noise_accel_stddev_y', str(sAccel)) # m/s2
         imu_bp.set_attribute('noise_accel_stddev_z', str(sAccel)) # m/s2
@@ -245,7 +245,7 @@ def main():
         #sRotat = 1.0*dt # assume 1.0rad/s2 as the maximum turn rate acceleration for the vehicle
         #sRotat = sRotat**2 
         #sRotat = 0.03
-        sRotat = 0.001
+        sRotat = 0.003
         imu_bp.set_attribute('noise_gyro_stddev_x', str(sRotat)) # rad/s
         imu_bp.set_attribute('noise_gyro_stddev_z', str(sRotat)) # rad/s
         imu_bp.set_attribute('noise_gyro_stddev_y', str(sRotat)) # rad/s

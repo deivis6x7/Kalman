@@ -285,6 +285,7 @@ def main():
         #lidar_bp.set_attribute('sensor_tick', POS_TICK_INTERVAL) #verificar
         transform = carla.Transform(carla.Location(x=0, z=1.875))
         lidar = world.spawn_actor(lidar_bp, transform, attach_to=vehicle)
+        #actor_list.append(lidar) #verificar !!! (lidar custoso, então destrua ao final!)
         return lidar
 
 
